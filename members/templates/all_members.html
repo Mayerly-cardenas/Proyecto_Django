@@ -1,0 +1,20 @@
+{% extends "master.html" %}
+
+{% block title %}
+  My Tennis Club - List de los miembros
+{% endblock %}
+
+{% block content %}
+
+  <h1>Miembros</h1>
+  
+  <ul>
+    {% for x in mymembers %}
+      <li><a href="details/{{ x.id }}">{{ x.firstname }} {{ x.lastname }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <a href="/" class="cta-button">Volver al  Inicio</a>
+
+  {% block button %}{% endblock %}
+{% endblock %}

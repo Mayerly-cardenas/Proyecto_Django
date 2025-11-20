@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Trebuchet MS', sans-serif;
+            background-color: #e9eef4;
+            color: #222;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: #0b6e4f;
+            padding: 1.2rem 0;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            color: white;
+            font-size: 1.9rem;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 3px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.4rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 7px 14px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        /* Hero */
+        .hero {
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 1200px;
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .hero h1 {
+            color: #0b6e4f;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero img {
+            margin-top: 12px;
+            border-radius: 12px;
+            width: 70%;
+            max-width: 650px;
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #444;
+            margin-top: 1.5rem;
+        }
+
+        /* Animación */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        footer {
+            background: #0b6e4f;
+            color: white;
+            padding: 1.8rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0.4rem 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="#" class="brand">CLUB TENIS ADSO</a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero" id="inicio">
+        <h1>Bienvenidos al Club de Tenis ADSO</h1>
+
+        <!-- Imagen NUEVA alusiva al tenis -->
+        <img src="https://media.istockphoto.com/id/2033218434/es/foto/grupo-de-amigos-jugando-al-tenis-en-la-cancha.jpg?s=612x612&w=0&k=20&c=1XicNdrAol5bKIC7SlnHmmsCD67dhRm_GpFt3eHa7n0=" 
+             alt="Tenis - Campo y raquetas">
+
+        <p>Aquí encuentras la lista de los miembros destacados:</p>
+
+        {% block content %}
+        {% endblock %}
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 Club ADSO </p>
+    <p>Sitio web con Django </p>
+</footer>
+
+</body>
+</html>

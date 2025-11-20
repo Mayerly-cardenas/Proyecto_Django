@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Página no encontrada</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --green-dark: #0a5c45;
+            --green-main: #07b678;
+            --green-light: #c8ffe6;
+            --bg: #e8fff3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--green-dark);
+            padding: 1rem 0;
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: var(--green-light);
+        }
+
+        /* CONTENIDO PRINCIPAL 404 */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(14px);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            animation: fadeUp 1s ease;
+        }
+
+        .error-img {
+            width: 220px;
+            margin-bottom: 1rem;
+        }
+
+        .error-code {
+            font-size: 6.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--green-dark), var(--green-main));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: .5rem;
+        }
+
+        .error-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+        }
+
+        .error-text {
+            font-size: 1.1rem;
+            color: #2e5c4f;
+            margin-bottom: 2.2rem;
+        }
+
+        .btn-home {
+            background: linear-gradient(90deg, var(--green-dark), var(--green-main));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(7, 182, 120, 0.4);
+            transition: .3s;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(7, 182, 120, 0.6);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--green-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+
+        footer .social-links a {
+            color: white;
+            margin: 0 1rem;
+            font-size: 1.3rem;
+            transition: .3s;
+        }
+
+        footer .social-links a:hover {
+            color: var(--green-main);
+        }
+
+        /* ANIMACIÓN */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .error-code { font-size: 4.5rem; }
+            .glass-box { padding: 2rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <a href="/" class="logo">ADSO TENNIS CLUB</a>
+
+        <nav>
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="/miembros"><i class="fas fa-users"></i> Miembros</a></li>
+                <li><a href="/contacto"><i class="fas fa-phone"></i> Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="glass-box">
+        
+        <!-- Imagen verde tipo ilustración -->
+        <img src="https://cdn-icons-png.flaticon.com/512/9176/9176388.png" alt="Error 404" class="error-img">
+
+        <p class="error-code">404</p>
+        <h1 class="error-title">Página no encontrada</h1>
+        <p class="error-text">
+            Lo sentimos, la página que buscas ya no existe o ha sido movida.  
+            Regresa al inicio para seguir navegando.
+        </p>
+
+        <a href="/" class="btn-home"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 ADSO Tennis Club. Todos los derechos reservados.</p>
+    <div class="social-links">
+        <a href="#"><i class="fas fa-envelope"></i></a>
+        <a href="#"><i class="fas fa-phone"></i></a>
+        <a href="#"><i class="fas fa-location-arrow"></i></a>
+    </div>
+</footer>
+
+</body>
+</html>
