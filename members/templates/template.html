@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing QuerySets - Tennis Club</title>
+
+    <!-- Archivo CSS externo -->
+
+    <link rel="stylesheet" href="{% static 'members/mystyles.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎾 Tennis Club Dashboard</h1>
+            <p>Sistema de Gestión de Miembros - QuerySets Testing</p>
+        </div>
+
+        <div class="content">
+
+            <!-- Sección de Frutas -->
+            <div class="section">
+                <h2 class="section-title">Variables desde Array</h2>
+                <div class="card-grid">
+                    {% for fruit in fruits %}
+                    <div class="fruit-item">
+                        🍎 {{ fruit }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Variable en Template -->
+            <div class="section">
+                <h2 class="section-title">Variable Creada en Template</h2>
+                {% with new_fruit="Orange" %}
+                <div class="info-box">
+                    <h2>🍊 Nueva Fruta: {{ new_fruit }}</h2>
+                </div>
+                {% endwith %}
+            </div>
+
+            <!-- Estadísticas -->
+            <div class="section">
+                <h2 class="section-title">Estadísticas del Club</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="number">{{ miembros|length }}</div>
+                        <div class="label">Total Miembros</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">{{ records_Kamila|length }}</div>
+                        <div class="label">Llamadas Kamila</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">{{ record_like_star_L|length }}</div>
+                        <div class="label">Nombres con "L"</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">{{ record_like_gt_2022_01_01|length }}</div>
+                        <div class="label">Desde 2022</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Todos los Miembros -->
+            <div class="section">
+                <h2 class="section-title">Todos los Miembros del Club</h2>
+                <div class="card-grid">
+                    {% for miembro in miembros %}
+                    <div class="card">
+                        <h3>👤 {{ miembro.firstname }} {{ miembro.lastname }}</h3>
+                        <p><strong>ID:</strong> {{ miembro.id }}</p>
+                        <p><strong>Teléfono:</strong> {{ miembro.phone|default:"No registrado" }}</p>
+                        <p><strong>Fecha ingreso:</strong> {{ miembro.joined_date }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Solo Nombres -->
+            <div class="section">
+                <h2 class="section-title">Solo Columna 'firstname'</h2>
+                <ul class="list-simple">
+                    {% for name in colum_firstname %}
+                    <li><span class="icon">✓</span>{{ name.0 }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Filtros Específicos -->
+            <div class="section">
+                <h2 class="section-title">Miembros llamados "Kamila"</h2>
+                {% for miembro in records_Kamila %}
+                <div class="member-card">
+                    <strong>{{ miembro.firstname }} {{ miembro.lastname }}</strong>
+                    <span class="badge">ID: {{ miembro.id }}</span>
+                </div>
+                {% empty %}
+                <p style="color: #718096;">No se encontraron resultados</p>
+                {% endfor %}
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Sandra OR Jorge (Operador |)</h2>
+                {% for miembro in record_or_Sandra_Jorge %}
+                <div class="member-card">
+                    <strong>{{ miembro.firstname }} {{ miembro.lastname }}</strong>
+                    <span class="badge">ID: {{ miembro.id }}</span>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Nombres que empiezan con "L"</h2>
+                <div class="card-grid">
+                    {% for miembro in record_like_star_L %}
+                    <div class="card">
+                        <h3>{{ miembro.firstname }} {{ miembro.lastname }}</h3>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Apellidos que terminan con "ez"</h2>
+                {% for miembro in record_like_endswith_ez %}
+                <div class="member-card">
+                    {{ miembro.firstname }} <strong>{{ miembro.lastname }}</strong>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Ordenamiento -->
+            <div class="section">
+                <h2 class="section-title">Miembros Ordenados (A-Z)</h2>
+                <ul class="list-simple">
+                    {% for miembro in order_by_asc %}
+                    <li><span class="icon">▲</span>{{ miembro.firstname }} {{ miembro.lastname }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Miembros Ordenados (Z-A)</h2>
+                <ul class="list-simple">
+                    {% for miembro in order_by_desc %}
+                    <li><span class="icon">▼</span>{{ miembro.firstname }} {{ miembro.lastname }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Fecha Actual -->
+            <div class="section">
+                <h2 class="section-title">Información del Sistema</h2>
+                <div class="date-display">
+                    📅 Fecha Actual: {% now "d/m/Y" %}
+                </div>
+            </div>
+
+            {% include "black_friday.html" %}
+
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Tennis Club - Sistema de Gestión de Miembros</p>
+            <p>Desarrollado con Django 💙</p>
+        </div>
+
+    </div>
+</body>
+</html>
